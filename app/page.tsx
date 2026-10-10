@@ -1,164 +1,70 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { HugeiconsIcon } from '@hugeicons/react';
 import {
-  ArrowUpRight,
-  Blocks,
-  Bot,
-  Braces,
-  Check,
-  CheckCircle2,
-  ChevronRight,
-  CloudCog,
-  Code2,
-  FileCheck2,
-  Fingerprint,
-  Landmark,
-  Layers3,
-  LockKeyhole,
-  Network,
-  Play,
-  ShieldCheck,
-  Sparkles,
-  TerminalSquare,
-  Users,
-} from 'lucide-react';
+  AiBrain03Icon,
+  ArrowRight01Icon,
+  ArrowUpRight01Icon,
+  BankIcon,
+  BookOpenCheckIcon,
+  CheckmarkCircle02Icon,
+  CloudServerIcon,
+  FlaskConicalIcon,
+  SecurityCheckIcon,
+  WorkHistoryIcon,
+} from '@hugeicons/core-free-icons';
 import Navbar from '@/components/Navbar';
-
-const tickerItems = [
-  ['⚡', 'Student Collaboration'],
-  ['🔬', 'Campus Centers of Excellence'],
-  ['⌘', 'Practitioner Masterclasses'],
-  ['🏢', 'Company Immersion Visits'],
-  ['◫', 'Milestone Architectural Reviews'],
-];
+import SiteFooter from '@/components/SiteFooter';
+import ProofShowcase from '@/components/ProofShowcase';
+import { LabOpsScreen, LearningStudioScreen, PartnershipAccessScreen } from '@/components/ProductScreens';
 
 const domains = [
   {
     number: '01',
-    title: 'AI Engineering & Intelligent Systems',
-    text: 'Machine learning, generative AI, autonomous agents, intelligent applications, vision, and AI systems engineering.',
+    title: 'AI Engineering',
+    descriptor: 'Build, evaluate and operate intelligent systems.',
+    detail: 'Foundation models, agentic systems, computer vision, production ML and responsible AI.',
     href: '/domains/ai-engineering',
-    icon: Bot,
-    className: 'ai',
+    icon: AiBrain03Icon,
+    tone: 'violet',
   },
   {
     number: '02',
-    title: 'Cloud & Platform Engineering',
-    text: 'Cloud architecture, distributed computing, platform engineering, DevOps, infrastructure-as-code, and site reliability.',
+    title: 'Cloud & Platform',
+    descriptor: 'Design the systems everything else depends on.',
+    detail: 'Distributed systems, internal developer platforms, infrastructure as code, SRE and incident practice.',
     href: '/domains/cloud-platform-engineering',
-    icon: CloudCog,
-    className: 'cloud',
+    icon: CloudServerIcon,
+    tone: 'sky',
   },
   {
     number: '03',
-    title: 'Cybersecurity & Digital Trust',
-    text: 'Application and network security, cloud security, threat modeling, secure system design, and defensive operations.',
+    title: 'Cybersecurity',
+    descriptor: 'Learn to break assumptions and defend real systems.',
+    detail: 'Application security, cloud identity, detection engineering, threat modeling and incident response.',
     href: '/domains/cybersecurity-digital-trust',
-    icon: LockKeyhole,
-    className: 'cyber',
+    icon: SecurityCheckIcon,
+    tone: 'emerald',
   },
   {
     number: '04',
-    title: 'Financial Technology & Quantitative Systems',
-    text: 'FinTech applications, payment systems, financial computing, quantitative modeling, and trading backtesting.',
+    title: 'FinTech & Quant',
+    descriptor: 'Engineer trustworthy systems for money and markets.',
+    detail: 'Digital payments, trading systems, financial data, model risk, fraud and quantitative research.',
     href: '/domains/fintech-quantitative-systems',
-    icon: Landmark,
-    className: 'fintech',
+    icon: BankIcon,
+    tone: 'amber',
   },
 ];
 
-const proofs = [
-  {
-    tag: 'STUDENT EXPERIENCE',
-    title: 'Interactive Workspaces',
-    text: 'Real browser-based code execution, unit test grading, and runtime feedback.',
-    icon: TerminalSquare,
-    artifact: 'workspace',
-  },
-  {
-    tag: 'ACADEMIC READY',
-    title: 'BOS-Ready Syllabus',
-    text: 'Fully mapped elective curricula for Board of Studies and academic council accreditation.',
-    icon: FileCheck2,
-    artifact: 'syllabus',
-  },
-  {
-    tag: 'INDUSTRY MODELED',
-    title: 'Scoped Project Briefs',
-    text: 'Industry-modeled specifications with explicit milestone deliverables and code standards.',
-    icon: Layers3,
-    artifact: 'brief',
-  },
-  {
-    tag: 'CAPABILITY PROOF',
-    title: 'Verified Student Portfolio',
-    text: 'Cryptographically verified capability passports detailing commits and live demos.',
-    icon: Fingerprint,
-    artifact: 'passport',
-  },
+const systemPoints = [
+  ['01', 'Current curriculum', 'Course architecture shaped with practitioners and made ready for academic review.'],
+  ['02', 'Faculty ownership', 'Materials, tools and enablement that help your faculty lead every delivery.'],
+  ['03', 'Work worth inspecting', 'Projects, reviews and evidence that reveal what students can actually do.'],
 ];
 
-function ArrowLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return <Link href={href} className="arrow-link">{children}<span aria-hidden="true">→</span></Link>;
-}
-
-function CodeWorkspace() {
-  return (
-    <div className="code-workspace" aria-label="Illustration of the BayesStack code workspace">
-      <div className="workspace-topbar">
-        <div className="window-dots"><span /><span /><span /></div>
-        <span className="workspace-title"><Braces size={13} /> model_validator.py</span>
-        <span className="workspace-live"><i /> workspace live</span>
-      </div>
-      <div className="workspace-body">
-        <div className="file-rail" aria-hidden="true">
-          <Code2 size={17} /><Blocks size={17} /><Network size={17} />
-        </div>
-        <div className="editor-pane">
-          <div className="code-lines">
-            <span><b>01</b><code><em>from</em> bayesstack <em>import</em> Validator</code></span>
-            <span><b>02</b><code /></span>
-            <span><b>03</b><code><em>def</em> <i>evaluate_model</i>(predictions):</code></span>
-            <span><b>04</b><code>  metrics = Validator.compare(</code></span>
-            <span><b>05</b><code>    predictions, threshold=<mark>0.92</mark></code></span>
-            <span><b>06</b><code>  )</code></span>
-            <span className="active-line"><b>07</b><code>  <em>return</em> metrics.passed</code></span>
-            <span><b>08</b><code /></span>
-          </div>
-          <div className="terminal-panel">
-            <div className="terminal-header"><span><TerminalSquare size={13} /> Test harness</span><span>3 / 3</span></div>
-            <div className="test-row"><Check size={13} /> data schema validates <small>42ms</small></div>
-            <div className="test-row"><Check size={13} /> precision exceeds baseline <small>76ms</small></div>
-            <div className="test-row"><Check size={13} /> edge cases handled <small>31ms</small></div>
-          </div>
-        </div>
-        <aside className="faculty-panel">
-          <span className="panel-label">FACULTY GUIDE</span>
-          <div className="avatar-row"><span>AK</span><div><strong>Review checkpoint</strong><small>Milestone 03</small></div></div>
-          <p>Ask students to justify the threshold against real-world model risk.</p>
-          <div className="progress-label"><span>Rubric progress</span><strong>84%</strong></div>
-          <div className="progress-track"><span /></div>
-          <button type="button">Open rubric <ChevronRight size={13} /></button>
-        </aside>
-      </div>
-      <div className="workspace-float"><CheckCircle2 size={18} /><span><strong>All checks passed</strong><small>Ready for faculty review</small></span></div>
-    </div>
-  );
-}
-
-function ProofArtifact({ type }: { type: string }) {
-  if (type === 'workspace') return (
-    <div className="mini-artifact mini-workspace"><span className="mini-bar"><i /><i /><i /></span><code><b>✓</b> test_data_pipeline</code><code><b>✓</b> test_model_output</code><code className="running">● &nbsp; running evaluation</code></div>
-  );
-  if (type === 'syllabus') return (
-    <div className="mini-artifact mini-syllabus"><div><span>BSE-AI-401</span><small>4 CREDITS</small></div><p>Applied Intelligent Systems</p><i /><i /><i className="short" /><strong><ShieldCheck size={13} /> BOS mapped</strong></div>
-  );
-  if (type === 'brief') return (
-    <div className="mini-artifact mini-brief"><span className="brief-label">PROJECT / 08</span><p>Resilient payment routing</p><div><i>01</i><span /><i>02</i><span /><i>03</i></div><small>3 milestones · 6 deliverables</small></div>
-  );
-  return (
-    <div className="mini-artifact mini-passport"><div className="passport-person"><span>AS</span><p><strong>Ananya S.</strong><small>Capability passport</small></p><CheckCircle2 size={15} /></div><div className="passport-metrics"><span><b>18</b><small>COMMITS</small></span><span><b>04</b><small>REVIEWS</small></span><span><b>02</b><small>DEMOS</small></span></div></div>
-  );
+function ActionLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return <Link href={href} className="action-link">{children}<HugeiconsIcon icon={ArrowRight01Icon} size={18} strokeWidth={2} /></Link>;
 }
 
 export default function Home() {
@@ -167,152 +73,125 @@ export default function Home() {
       <Navbar />
 
       <section className="hero">
-        <div className="hero-grid-bg" />
-        <div className="hero-orb hero-orb-one" /><div className="hero-orb hero-orb-two" />
+        <div className="hero-field" />
         <div className="container hero-inner">
           <div className="hero-copy">
-            <div className="eyebrow indigo"><span className="pulse-dot" /> Institutional Learning System</div>
             <h1>Take learning beyond <span>the classroom.</span></h1>
-            <p className="hero-lede">BayesStack helps educational institutions bring industry-designed programs, hands-on learning, and meaningful industry connections to their students, so they can put what they learn to work.</p>
+            <p className="hero-lede">BayesStack helps colleges bring industry-shaped programs, hands-on building and meaningful professional access to undergraduate students.</p>
             <div className="hero-actions">
-              <Link href="/contact" className="button primary">Discuss a Partnership <span>→</span></Link>
-              <Link href="/solutions/programs" className="button secondary">Explore Programs <ArrowUpRight size={15} /></Link>
-            </div>
-            <div className="hero-trust">
-              <div className="trust-avatars"><span>F</span><span>S</span><span>I</span></div>
-              <p><strong>One connected learning system</strong><small>Faculty · Students · Industry</small></p>
+              <Link href="/contact" className="button primary">Discuss a partnership <HugeiconsIcon icon={ArrowUpRight01Icon} size={18} strokeWidth={2} /></Link>
+              <Link href="/solutions/programs" className="button secondary">Explore the learning system <HugeiconsIcon icon={ArrowRight01Icon} size={18} strokeWidth={2} /></Link>
             </div>
           </div>
-
-          <div className="hero-visual" aria-label="Students collaborating in a campus technology lab">
+          <figure className="hero-visual">
             <div className="hero-photo-wrap">
-              <Image src="/images/campus-lab.webp" alt="University students collaborating on a robotics prototype in a modern campus lab" fill priority sizes="(max-width: 900px) 94vw, 48vw" />
-              <div className="photo-scrim" />
-              <div className="visual-status"><span><i /> COE / ACTIVE</span><b>Intelligent Systems Lab</b></div>
-              <button type="button" className="play-button" aria-label="Play campus lab overview"><Play size={17} fill="currentColor" /></button>
+              <Image src="/images/documentary/modern-lab.webp" alt="Indian undergraduate students assembling and testing a robotics system in a well-equipped college lab" fill priority sizes="(max-width: 900px) 94vw, 48vw" />
             </div>
-            <div className="floating-card cohort-card"><Users size={17} /><div><span>COHORT 04</span><strong>32 builders</strong></div></div>
-            <div className="floating-card review-card"><CheckCircle2 size={17} /><div><span>MILESTONE REVIEW</span><strong>Architecture approved</strong></div></div>
-            <div className="visual-index">01 <span>/</span> 03</div>
-          </div>
+            <figcaption><span>Applied systems studio</span><p>Students test a working prototype during an open lab session.</p></figcaption>
+          </figure>
         </div>
-        <div className="hero-footnote container"><span>Built for institutions shaping what comes next</span><i /></div>
       </section>
 
-      <section className="problem section">
-        <div className="container problem-inner">
-          <p className="section-kicker">THE GAP WE CLOSE</p>
-          <div>
-            <h2>A curriculum is only part<br />of an education.</h2>
-            <p>Students need opportunities to put knowledge into practice, tackle unfamiliar problems, explore new possibilities, and learn from people working in their fields.</p>
-          </div>
-        </div>
-        <div className="ticker" aria-label="BayesStack learning experiences">
-          <div className="ticker-track">
-            {[...tickerItems, ...tickerItems].map(([icon, label], index) => (
-              <span className={`ticker-pill ticker-${(index % 5) + 1}`} key={`${label}-${index}`}><i>{icon}</i>{label}</span>
-            ))}
+      <section className="premise-section section">
+        <div className="container premise-grid">
+          <div><p className="section-kicker">THE GAP WE CLOSE</p><h2>A curriculum is only part of an education.</h2></div>
+          <div className="premise-content">
+            <p className="premise-lead">Students grow when knowledge meets difficult work, useful feedback and people already practising the craft.</p>
+            <div className="system-points">
+              {systemPoints.map(([number, title, text]) => <div key={number}><span>{number}</span><p><strong>{title}</strong><small>{text}</small></p></div>)}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="solution-section programs section">
-        <div className="container split-layout">
-          <div className="solution-copy">
-            <span className="number-badge programs-badge">01 / PROGRAMS</span>
-            <h2>Programs shaped by industry. Delivered by your faculty. <span>Enabled by BayesStack.</span></h2>
-            <p>Industry practitioners shape what students learn and how they apply it. BayesStack equips your faculty with the curriculum, teaching materials, assessments, and digital tools to deliver an engaging, hands-on learning experience.</p>
-            <div className="feature-tags"><span><CheckCircle2 size={14} /> BOS-ready curriculum</span><span><CheckCircle2 size={14} /> Faculty enablement</span></div>
-            <ArrowLink href="/solutions/programs">How It Works</ArrowLink>
+      <section className="solution-story programs-story section">
+        <div className="container story-grid">
+          <div className="story-copy">
+            <span className="story-index"><HugeiconsIcon icon={BookOpenCheckIcon} size={22} />01 / Programs</span>
+            <h2>New fields become rigorous courses your faculty can own.</h2>
+            <p>Practitioners help shape the capability. BayesStack turns it into a credit-ready course with teaching plans, studios, assessments, rubrics and faculty enablement.</p>
+            <ul><li><HugeiconsIcon icon={CheckmarkCircle02Icon} size={18} />Board of Studies package</li><li><HugeiconsIcon icon={CheckmarkCircle02Icon} size={18} />Purpose-built learning studio</li><li><HugeiconsIcon icon={CheckmarkCircle02Icon} size={18} />Delivery support that transfers ownership</li></ul>
+            <ActionLink href="/solutions/programs">See how programs work</ActionLink>
           </div>
-          <CodeWorkspace />
+          <div className="story-graphic"><LearningStudioScreen compact /></div>
         </div>
       </section>
 
-      <section className="solution-section labs section alt-bg">
-        <div className="container split-layout visual-first">
-          <div className="editorial-visual lab-visual">
-            <Image src="/images/campus-lab.webp" alt="Student team debugging an intelligent robotics system in a university lab" fill sizes="(max-width: 900px) 94vw, 46vw" />
-            <div className="image-label"><span>LAB NOTE / 07</span><strong>From idea to working prototype.</strong></div>
-            <div className="image-metric"><b>12</b><span>active<br />projects</span></div>
+      <section className="solution-story labs-story section">
+        <div className="container story-grid visual-first">
+          <div className="lab-composition">
+            <Image src="/images/documentary/workshop-lab.webp" alt="Indian undergraduate students debugging a mobile robotics project in an active college laboratory" fill sizes="(max-width: 900px) 94vw, 48vw" />
+            <div className="lab-inset"><LabOpsScreen /></div>
           </div>
-          <div className="solution-copy">
-            <span className="number-badge labs-badge">02 / LABS</span>
-            <h2>Give ambitious student work room to grow.</h2>
-            <p>BayesStack helps universities establish and operate Centers of Excellence where students undertake mentored technical projects, explore emerging ideas, develop prototypes, and showcase what they&apos;ve built.</p>
-            <div className="feature-tags"><span><CheckCircle2 size={14} /> Mentored projects</span><span><CheckCircle2 size={14} /> Campus showcase</span></div>
-            <ArrowLink href="/solutions/labs">Explore Labs</ArrowLink>
+          <div className="story-copy">
+            <span className="story-index"><HugeiconsIcon icon={FlaskConicalIcon} size={22} />02 / Labs</span>
+            <h2>Give ambitious student work a serious home on campus.</h2>
+            <p>A BayesStack Center of Excellence is an operating system for projects, not a room full of equipment. It brings together selected cohorts, mentors, technical infrastructure, review cadence and public showcases.</p>
+            <ul><li><HugeiconsIcon icon={CheckmarkCircle02Icon} size={18} />A year-round project pipeline</li><li><HugeiconsIcon icon={CheckmarkCircle02Icon} size={18} />Practitioner and faculty mentorship</li><li><HugeiconsIcon icon={CheckmarkCircle02Icon} size={18} />Evidence from every milestone</li></ul>
+            <ActionLink href="/solutions/labs">Explore Centers of Excellence</ActionLink>
           </div>
         </div>
       </section>
 
-      <section className="solution-section partnerships section">
-        <div className="container split-layout">
-          <div className="solution-copy">
-            <span className="number-badge partnerships-badge">03 / PARTNERSHIPS</span>
+      <section className="solution-story partnerships-story section">
+        <div className="container story-grid">
+          <div className="story-copy">
+            <span className="story-index"><HugeiconsIcon icon={WorkHistoryIcon} size={22} />03 / Partnerships</span>
             <h2>Make industry more than a guest lecture.</h2>
-            <p>BayesStack brings students and industry practitioners closer through technical masterclasses, project reviews, online expert access, industry challenges, and curated experiences beyond campus.</p>
-            <div className="feature-tags"><span><CheckCircle2 size={14} /> Expert reviews</span><span><CheckCircle2 size={14} /> Industry immersion</span></div>
-            <ArrowLink href="/solutions/partnerships">Explore Partnerships</ArrowLink>
+            <p>Bring practitioners into the learning journey at the moments where their context matters most: when a brief is framed, an architecture is challenged, a project is reviewed or a cohort enters the field.</p>
+            <ul><li><HugeiconsIcon icon={CheckmarkCircle02Icon} size={18} />Small-format technical masterclasses</li><li><HugeiconsIcon icon={CheckmarkCircle02Icon} size={18} />Architecture and milestone reviews</li><li><HugeiconsIcon icon={CheckmarkCircle02Icon} size={18} />Prepared industry and cultural immersion</li></ul>
+            <ActionLink href="/solutions/partnerships">Build meaningful industry access</ActionLink>
           </div>
-          <div className="editorial-visual partnership-visual">
-            <Image src="/images/industry-review.webp" alt="Industry architect leading a software architecture review with student project leads" fill sizes="(max-width: 900px) 94vw, 46vw" />
-            <div className="image-label"><span>MILESTONE / 03</span><strong>Architecture review in progress.</strong></div>
-            <div className="live-chip"><i /> LIVE REVIEW</div>
+          <div className="story-graphic partnership-composition">
+            <PartnershipAccessScreen />
+            <figure><Image src="/images/documentary/industry-visit.webp" alt="Indian college students learning from an engineer during a visit to a working technology workshop" fill sizes="(max-width: 900px) 94vw, 43vw" /></figure>
           </div>
         </div>
       </section>
 
       <section className="domains-section section" id="domains">
         <div className="container">
-          <div className="section-heading-row">
-            <div><p className="section-kicker light">STRATEGIC PILLARS</p><h2>Industry Domains</h2></div>
-            <p>Bring specialized learning experiences into the fields shaping technology and finance.</p>
-          </div>
-          <div className="domain-grid">
-            {domains.map(({ number, title, text, href, icon: Icon, className }) => (
-              <Link href={href} className={`domain-card ${className}`} key={title}>
-                <div className="domain-card-top"><span>{number}</span><div><Icon size={25} strokeWidth={1.8} /></div></div>
-                <h3>{title}</h3><p>{text}</p>
-                <span className="card-link">Explore domain <ArrowUpRight size={15} /></span>
+          <div className="domains-heading"><p className="section-kicker light">DOMAIN PORTFOLIOS</p><h2>Courses students want to talk about.</h2><p>Current enough to be exciting. Structured enough to belong inside a serious undergraduate education.</p></div>
+          <div className="domain-list">
+            {domains.map(item => (
+              <Link href={item.href} className={`domain-row tone-${item.tone}`} key={item.title}>
+                <span className="domain-number">{item.number}</span>
+                <span className="domain-icon"><HugeiconsIcon icon={item.icon} size={28} strokeWidth={1.55} /></span>
+                <p><strong>{item.title}</strong><small>{item.descriptor}</small></p>
+                <em>{item.detail}</em>
+                <HugeiconsIcon icon={ArrowUpRight01Icon} size={22} strokeWidth={1.8} />
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="proof-section section">
+      <section className="evidence-section section">
         <div className="container">
-          <div className="center-heading"><p className="section-kicker">SEE IT IN PRACTICE</p><h2>Built for Rigor.<br />Designed for Universities.</h2><p>Explore the concrete artifacts BayesStack delivers to faculty, students, and academic councils.</p></div>
-          <div className="proof-grid">
-            {proofs.map(({ tag, title, text, icon: Icon, artifact }) => (
-              <article className="proof-card" key={title}>
-                <div className="proof-artifact"><ProofArtifact type={artifact} /></div>
-                <div className="proof-content"><span className="proof-tag"><Icon size={13} /> {tag}</span><h3>{title}</h3><p>{text}</p></div>
-              </article>
-            ))}
+          <div className="evidence-heading"><p className="section-kicker">SEE THE SYSTEM</p><h2>Serious learning leaves evidence behind.</h2><p>Move through four things an institution, faculty member and student can inspect.</p></div>
+          <ProofShowcase />
+        </div>
+      </section>
+
+      <section className="campus-section section">
+        <div className="container">
+          <div className="campus-heading"><p className="section-kicker">REAL CAMPUS PRACTICE</p><h2>Designed for the colleges students actually attend.</h2><p>BayesStack works with the institution you have, then helps raise what students and faculty can do inside it.</p></div>
+          <div className="campus-gallery">
+            <figure className="campus-primary"><Image src="/images/documentary/modern-classroom.webp" alt="An instructor discussing a systems diagram with undergraduate students in a contemporary Indian college classroom" fill sizes="(max-width: 700px) 94vw, 58vw" /><figcaption>Faculty-led, workshop-style learning</figcaption></figure>
+            <figure><Image src="/images/documentary/faculty-classroom.webp" alt="A faculty member helping a small student group during a laptop-based class" fill sizes="(max-width: 700px) 94vw, 30vw" /><figcaption>Support at the desk, not only the lectern</figcaption></figure>
+            <figure><Image src="/images/documentary/capstone-showcase.webp" alt="Students presenting an engineering prototype to faculty and industry reviewers" fill sizes="(max-width: 700px) 94vw, 30vw" /><figcaption>Work opened to useful scrutiny</figcaption></figure>
           </div>
         </div>
       </section>
 
       <section className="final-section section">
-        <div className="container">
-          <div className="final-card">
-            <div className="final-pattern" />
-            <div className="final-icon"><Sparkles size={22} /></div>
-            <div className="final-content"><p className="section-kicker dark-kicker">START A CONVERSATION</p><h2>What could this look like<br />at your institution?</h2><p>Whether you&apos;re introducing new learning programs, building a space for ambitious student work, or bringing industry closer to campus, let&apos;s explore what&apos;s possible for your students.</p></div>
-            <div className="final-action"><Link href="/contact" className="button primary">Discuss a Partnership <span>→</span></Link><small>No decks. No hard sell.<br />Just a useful conversation.</small></div>
-          </div>
+        <div className="container final-card">
+          <div><p className="section-kicker dark-kicker">START WITH A REAL NEED</p><h2>What should your students become capable of next?</h2><p>Bring us the gap you can see. We will help shape the program, lab or industry partnership around it.</p></div>
+          <Link href="/contact" className="button primary">Discuss a partnership <HugeiconsIcon icon={ArrowUpRight01Icon} size={18} strokeWidth={2} /></Link>
         </div>
       </section>
 
-      <footer className="footer">
-        <div className="container footer-top">
-          <div className="footer-brand"><Link href="/" className="brand"><Image src="/brand/logos/symbol-primary.svg" alt="" width={27} height={35} /><span>BayesStack</span></Link><p>Institutional Learning System.</p><small>Curriculum × Practice × Industry</small></div>
-          <div className="footer-links"><div><strong>Solutions</strong><Link href="/solutions/programs">Programs</Link><Link href="/solutions/labs">Labs</Link><Link href="/solutions/partnerships">Partnerships</Link></div><div><strong>Domains</strong><Link href="/domains/ai-engineering">AI Engineering</Link><Link href="/domains/cloud-platform-engineering">Cloud & Platform</Link><Link href="/domains/cybersecurity-digital-trust">Cybersecurity</Link><Link href="/domains/fintech-quantitative-systems">FinTech & Quant</Link></div><div><strong>Company</strong><Link href="/about">About</Link><Link href="/contact">Contact</Link></div></div>
-        </div>
-        <div className="container footer-bottom"><span>© 2026 BayesStack. All rights reserved.</span><span>Built for institutions shaping what comes next.</span></div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

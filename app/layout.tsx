@@ -3,6 +3,7 @@ import '@fontsource-variable/inter';
 import '@fontsource-variable/outfit';
 import '@fontsource-variable/jetbrains-mono';
 import './globals.css';
+import './interior.css';
 
 export const metadata: Metadata = {
   title: 'BayesStack | Institutional Learning System',
@@ -31,12 +32,12 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#F8FAFC',
+  themeColor: '#F3F6F5',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body>{children}</body>
     </html>
   );
