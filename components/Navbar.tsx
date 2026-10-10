@@ -52,7 +52,7 @@ export default function Navbar() {
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''} ${open ? 'menu-open' : ''}`}>
       <div className="nav-shell">
         <Link href="/" className="brand" aria-label="BayesStack home">
-          <Image src="/brand/logos/symbol-primary.svg" alt="" width={26} height={34} priority />
+          <Image src="/brand/logos/symbol-primary.svg" alt="" width={32} height={42} priority />
           <span>BayesStack</span>
         </Link>
 

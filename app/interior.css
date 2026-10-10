@@ -98,8 +98,8 @@
 .inner-section { padding: 118px 0; }
 .soft-section { background: #f4f7f6; border-color: #dfe8e7; }
 .breadcrumb { padding-top: 22px; color: #5a7179; }
-.inner-hero { min-height: 800px; padding-top: 82px; background: #f3f6f5; }
-.inner-grid-bg { inset: 82px 0 0; opacity: .62; background-size: 72px 72px; }
+.inner-hero { min-height: 800px; padding-top: 92px; background: #f3f6f5; }
+.inner-grid-bg { inset: 92px 0 0; opacity: .62; background-size: 72px 72px; }
 .inner-hero::after { width: 520px; height: 520px; right: -280px; opacity: .45; }
 .inner-hero-layout { min-height: 660px; padding: 45px 0 68px; }
 .inner-hero h1 { margin: 0 0 27px; font-size: clamp(3.7rem, 5.5vw, 5.25rem); line-height: .97; font-weight: 720; }
@@ -161,7 +161,7 @@
 .principles-grid { gap: 0; border-top: 1px solid var(--bs-border-hover); border-bottom: 1px solid var(--bs-border-hover); }
 .principles-grid article { min-height: 285px; border: 0; border-right: 1px solid var(--bs-border); border-bottom: 1px solid var(--bs-border); border-radius: 0; }
 .institution-system-graphic { width: 100%; height: auto; display: block; margin-top: 58px; border-radius: 7px 22px 7px 22px; }
-.contact-hero { min-height: 800px; padding-top: 82px; background: #f3f6f5; }
+.contact-hero { min-height: 800px; padding-top: 92px; background: #f3f6f5; }
 .contact-hero-grid { min-height: 718px; }
 .contact-copy h1 { margin-top: 0; font-weight: 720; }
 .conversation-card, .selection-path, .expect-steps { border-radius: 7px 18px 7px 18px; box-shadow: var(--shadow-card); }
