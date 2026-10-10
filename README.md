@@ -29,3 +29,14 @@ Use these build settings:
 - Node.js version: `24`
 
 The site has no server-side runtime or environment-variable requirements.
+
+## Cloudflare Workers static-assets fallback
+
+The repository also includes `wrangler.jsonc` for Cloudflare projects created
+through Workers Builds. Use:
+
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+
+Wrangler will upload the static `out/` directory directly. It will not invoke
+OpenNext or expect a `.next/standalone` server build.
